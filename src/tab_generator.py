@@ -47,5 +47,15 @@ def print_board_2():
         print(line)
 
 while True:
-    scale = input("Insert an scale\n")
-    print_board(scales.__getattribute__(scale))
+    try:
+        note = raw_input("Insert a note\n")
+        scale = raw_input("Insert an scale\n")
+        if not isinstance(note, str):
+            note = str(note)
+        if not isinstance(scale, str):
+            scale = str(scale)
+        scale_notes = scales.make_scale(note, scales.scales[scale])
+        print_board(scale_notes)
+    except KeyboardInterrupt:
+        print "\nBye"
+        break
