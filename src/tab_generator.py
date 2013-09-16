@@ -1,61 +1,21 @@
-import scales
-import notes
+#! /usr/bin/python
+import argparse
 
+from scales import make_scale
+from board import Board
 
-'''
-string = input("Insert the string number\n")
-fret = input("Insert the fret number\n")
-print(get_note_from_fretboard(string, fret))
-'''
-'''
-note  = input("Insert the note\n")
-octave = input("Insert the octave\n")
-print(get_frets_from_note(note, octave))
-'''
+parser = argparse.ArgumentParser()
+parser.add_argument('-t', '--tunning', type=str, 
+                    help='Guitar tunning', default='EADGBE')
+parser.add_argument('-k', '--key', type=str, 
+                    help='Key note of the scale', required=True)
+parser.add_argument('-s', '--scale', type=str, 
+                    help='Scale to draw', required=True)
+args = parser.parse_args()
 
-def print_board(scale):
-    line = "-" * 4 + "|"  
-    for i in range(1,24):
-        line += " %-2d|" % i
-    print line
+note = args.key.lower()
+scale = args.scale.lower()
 
-    for string in sorted(notes.fretboard.keys()):
-        line = string + "(" + notes.fretboard[string]['note'] + ")|"
-
-        for i in range(1,24):
-            note, octave = notes.get_note_from_fretboard(string, i) 
-            if note in scale:
-                line += " %-2s" % note
-            else:
-                line += "   "
-            if i < 24:
-                line += "|"
-        print(line)
-
-def print_board_2():
-    line = "-" * 4 + "|"  
-    for i in range(1,24):
-        line += " %-2d " % i
-    print line
-    for string in sorted(notes.fretboard.keys()):
-        line = string + "(" + notes.fretboard[string]['note'] + ")|"
-        for i in range(1,24):
-            note, octave = notes.get_note_from_fretboard(string, i) 
-            line += " %-2s" % note
-            if i < 23:
-                line += "-"
-        print(line)
-
-while True:
-    try:
-        note = raw_input("Insert a note\n")
-        scale = raw_input("Insert an scale\n")
-        if not isinstance(note, str):
-            note = str(note)
-        if not isinstance(scale, str):
-            scale = str(scale)
-        scale_notes = scales.make_scale(note, scales.scales[scale])
-        print_board(scale_notes)
-    except KeyboardInterrupt:
-        print "\nBye"
-        break
+scale_notes = make_scale(note, scale)
+board = Board()
+print board.draw(scale_notes)

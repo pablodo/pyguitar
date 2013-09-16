@@ -1,4 +1,4 @@
-import notes
+from board import notes, notes_len
 
 Major = [2,2,1,2,2,2,1]
 Minor = [2,1,2,2,1,2,2]
@@ -10,13 +10,19 @@ scales = {'major': Major,
           'armonic_minor': ArmonicMinor, 
           'pentatonic': Pentatonic}
 
-def make_scale(tonic, mode):
-    scale = [tonic]
-    index = 0
-    for tone in mode:
-        note_index = notes.notes.index(scale[index])
-        note = notes.notes[(note_index + tone) - notes.notes_len]
-        scale.append(note)
-        index += 1
-    return scale
 
+def make_scale(tonic, scale):
+    if not scale in scales:
+        raise ScaleNotFoundError()
+
+    scale_notes = [tonic]
+    index = 0
+    for tone in scales[scale.lower()]:
+        note_index = notes.index(scale_notes[index])
+        note = notes[(note_index + tone) - notes_len]
+        scale_notes.append(note)
+        index += 1
+    return scale_notes
+
+class ScaleNotFoundError(Exception):
+    pass
