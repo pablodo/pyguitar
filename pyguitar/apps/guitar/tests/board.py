@@ -1,9 +1,14 @@
-from unittest import TestCase
+from django.test import SimpleTestCase
 
-from src.board import Board, BadTuningError, StringNotInBoardError, NoteNotFoundError
-from tests.helpers import standard_board, abcdef_board
+from pyguitar.apps.guitar.board import Board
+from pyguitar.apps.guitar.board import BadTuningError
+from pyguitar.apps.guitar.board import NoteNotFoundError
+from pyguitar.apps.guitar.board import StringNotInBoardError
+from helpers import standard_board
+from helpers import abcdef_board
 
-class BoardTest(TestCase):
+
+class BoardTest(SimpleTestCase):
 
     def setUp(self):
         self.board = Board()

@@ -1,14 +1,14 @@
 from board import notes, notes_len
 
-Major = [2,2,1,2,2,2,1]
-Minor = [2,1,2,2,1,2,2]
-ArmonicMinor = [2,1,2,2,1,3,1]
-Pentatonic = [3,2,2,3,2]
+major = [2,2,1,2,2,2,1]
+minor = [2,1,2,2,1,2,2]
+armonic_minor = [2,1,2,2,1,3,1]
+pentatonic = [3,2,2,3,2]
 
-scales = {'major': Major, 
-          'minor': Minor, 
-          'armonic_minor': ArmonicMinor, 
-          'pentatonic': Pentatonic}
+scales = {'major': major, 
+          'minor': minor, 
+          'armonic_minor': armonic_minor, 
+          'pentatonic': pentatonic}
 
 
 def make_scale(tonic, scale):

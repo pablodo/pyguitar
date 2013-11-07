@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from pyguitar import home
+from pyguitar.apps.website import views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -8,7 +8,7 @@ from pyguitar import home
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', home.index, name='index'),
+    url(r'^$', views.index, name='index'),
     # url(r'^pyguitar/', include('pyguitar.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

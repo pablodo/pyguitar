@@ -1,9 +1,10 @@
-from unittest import TestCase
+from django.test import SimpleTestCase
 
-from src.scales import make_scale, ScaleNotFoundError
+from pyguitar.apps.guitar.scales import make_scale
+from pyguitar.apps.guitar.scales import ScaleNotFoundError
 
 
-class ScalesTest(TestCase):
+class ScalesTest(SimpleTestCase):
 
     def test_make_pentatonic(self):
         expected = ['a', 'c', 'd', 'e', 'g', 'a']

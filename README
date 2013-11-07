@@ -1,7 +1,6 @@
 Requirements
 
 - django
-- nosetests
 
 Install:
 
@@ -9,4 +8,7 @@ sudo apt-get install virtualenv
 virtualenv env
 . ./env/bin/activate
 pip install django
-pip install nosetests
+
+Running:
+
+python manage.py runserver [port]
