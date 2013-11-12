@@ -1,14 +1,19 @@
-<h1>PyGuitar</h1>
-<label name='notes'>Select a note:</label>
-<select name='notes'>
-    {% for note in notes %}
-        <option>{{ note }}</option>
-    {% endfor %}
-</select>
-<label name='scales'>Select a scale:</label>
-<select name='scales'>
-    {% for scale in scales.keys %}
-        <option>{{ scale }}</option>
-    {% endfor %}
-</select>
-<input type=submit name='generate' value='Generate'/>
+<html>
+    <head></head>
+    <body>
+        <h1>PyGuitar</h1>
+        <label name='notes'>Select a note:</label>
+        <select name='notes'>
+            {% for note in notes %}
+                <option>{{ note }}</option>
+            {% endfor %}
+        </select>
+        <label name='scales'>Select a scale:</label>
+        <select name='scales'>
+            {% for scale in scales.keys %}
+                <option>{{ scale }}</option>
+            {% endfor %}
+        </select>
+        <input type=submit name='generate' value='Generate'/>
+    </body>
+</html>
