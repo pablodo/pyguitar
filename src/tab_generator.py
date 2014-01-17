@@ -17,5 +17,5 @@ note = args.key.lower()
 scale = args.scale.lower()
 
 scale_notes = make_scale(note, scale)
-board = Board()
+board = Board(args.tunning)
 print board.draw(scale_notes)
